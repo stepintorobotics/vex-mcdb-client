@@ -1,148 +1,708 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MCDb for VEX</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>MCDb for VEX Robotics (v0.2)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#000" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-
     <body>
-        <div id="main">
-            <p id="app_name"><b>MCDb FOR VEX</b></p>
-            <p id="event_name">EVENT NAME</p>
-
-            <p><br>Match type:</p>
-            <select id="selected_type">
-                <option value="1">1. Practice</option>
-                <option value="2">2. Qualification</option>
-                <option value="3">3. Quarter Final</option>
-                <option value="4">4. Semi Final</option>
-                <option value="5">5. Final</option>
-                <option value="6">6. Round of 16</option>
-            </select>
-            <p>Division:</p>
-            <input type="number" class="selector" id="selected_div">
-            <p>Instance (ie. 4 in QF 4-1):</p>
-            <input type="number" class="selector" id="selected_inst">
-            <p>Number:</p>
-            <input type="number" class="selector" id="selected_num">
-            <button id="refresh">Refresh</button>
-
-            <p id="match_name"><br><b>MATCH NAME</b></p>
+        <div id="wrapper">
+            <div id="header">
+                <p id="app_name">MCDb</p>
+                <p id="app_platform">for VEX Robotics</p>
+            </div>
+            <div id="event_title">
+                <p id="event_name">UK National Championship 2024</p>
+            </div>
+            <div id="match_select">
+                <select id="selected_event">
+                    <option value="0">0. TEST EVENT</option>
+                    <option value="1">1. UK NATIONALS — VRC [MS/HS]</option>
+                    <option value="2">2. UK NATIONALS — VIQRC [MS]</option>
+                    <option value="3">3. UK NATIONALS — VIQRC [ES]</option>
+                </select>
+                <select id="selected_type">
+                    <option value="1">1. PRACTICE</option>
+                    <option value="2">2. QUALIFICATION</option>
+                    <option value="3">3. QUARTER FINAL</option>
+                    <option value="4">4. SEMI FINAL</option>
+                    <option value="5">5. FINAL</option>
+                    <option value="6">6. ROUND OF 16</option>
+                    <option value="15">15. IQ FINALS</option>
+                </select>
+                <div class="selection">
+                    <input type="number" class="selector" id="selected_div" placeholder="DIVISION">
+                    <input type="number" class="selector" id="selected_inst" placeholder="INSTANCE">
+                    <input type="number" class="selector" id="selected_num" placeholder="NUMBER">
+                </div>
+                <button id="refresh">REFRESH</button>
+            </div>
             <div id="teams">
                 <div id="vrc">
-                    <p id="red1_number"><br><br><b>0000A</b></p>
-                    <p id="red1_name">TEAM 1</p>
-                    <p id="red1_grade"><br>Grade</p>
-                    <p id="red1_organisation">Organisation</p>
-                    <p id="red1_city">City</p>
-                    <p id="red1_robot"><br>Robot: NAME</p>
-                    <p id="red1_matches_total"><br>Matches played (total): 0</p>
-                    <p id="red1_wins_total">Matches won (total): 0</p>
-                    <p id="red1_wins_pct_total">Win % (total): 0</p>
-                    <p id="red1_matches_event"><br>Matches played (event): 0</p>
-                    <p id="red1_wins_event">Matches won (event): 0</p>
-                    <p id="red1_wins_pct_event">Win % (event): 0</p>
-                    <p id="red1_points_total"><br>Points scored (total): 0</p>
-                    <p id="red1_points_avg_total">Average points (total): 0</p>
-                    <p id="red1_points_event"><br>Points scored (event): 0</p>
-                    <p id="red1_points_avg_event">Average points (event): 0</p>
-                    <p id="red1_hs_total_score"><br>High score (total): 0</p>
-                    <p id="red1_hs_total_match">Match</p>
-                    <p id="red1_hs_total_event">Event</p>
-                    <p id="red1_hs_event_score"><br>High score (event): 0</p>
-                    <p id="red1_hs_event_match">Match</p>
-                    <ul id="red1_awards"></ul>
-
-                    <p id="red2_number"><br><br><b>0000A</b></p>
-                    <p id="red2_name">TEAM 1</p>
-                    <p id="red2_grade"><br>Grade</p>
-                    <p id="red2_organisation">Organisation</p>
-                    <p id="red2_city">City</p>
-                    <p id="red2_robot"><br>Robot: NAME</p>
-                    <p id="red2_matches_total"><br>Matches played (total): 0</p>
-                    <p id="red2_wins_total">Matches won (total): 0</p>
-                    <p id="red2_wins_pct_total">Win % (total): 0</p>
-                    <p id="red2_matches_event"><br>Matches played (event): 0</p>
-                    <p id="red2_wins_event">Matches won (event): 0</p>
-                    <p id="red2_wins_pct_event">Win % (event): 0</p>
-                    <p id="red2_points_total"><br>Points scored (total): 0</p>
-                    <p id="red2_points_avg_total">Average points (total): 0</p>
-                    <p id="red2_points_event"><br>Points scored (event): 0</p>
-                    <p id="red2_points_avg_event">Average points (event): 0</p>
-                    <p id="red2_hs_total_score"><br>High score (total): 0</p>
-                    <p id="red2_hs_total_match">Match</p>
-                    <p id="red2_hs_total_event">Event</p>
-                    <p id="red2_hs_event_score"><br>High score (event): 0</p>
-                    <p id="red2_hs_event_match">Match</p>
-                    <ul id="red2_awards"></ul>
-
-                    <p id="blue1_number"><br><br><b>0000A</b></p>
-                    <p id="blue1_name">TEAM 1</p>
-                    <p id="blue1_grade"><br>Grade</p>
-                    <p id="blue1_organisation">Organisation</p>
-                    <p id="blue1_city">City</p>
-                    <p id="blue1_robot"><br>Robot: NAME</p>
-                    <p id="blue1_matches_total"><br>Matches played (total): 0</p>
-                    <p id="blue1_wins_total">Matches won (total): 0</p>
-                    <p id="blue1_wins_pct_total">Win % (total): 0</p>
-                    <p id="blue1_matches_event"><br>Matches played (event): 0</p>
-                    <p id="blue1_wins_event">Matches won (event): 0</p>
-                    <p id="blue1_wins_pct_event">Win % (event): 0</p>
-                    <p id="blue1_points_total"><br>Points scored (total): 0</p>
-                    <p id="blue1_points_avg_total">Average points (total): 0</p>
-                    <p id="blue1_points_event"><br>Points scored (event): 0</p>
-                    <p id="blue1_points_avg_event">Average points (event): 0</p>
-                    <p id="blue1_hs_total_score"><br>High score (total): 0</p>
-                    <p id="blue1_hs_total_match">Match</p>
-                    <p id="blue1_hs_total_event">Event</p>
-                    <p id="blue1_hs_event_score"><br>High score (event): 0</p>
-                    <p id="blue1_hs_event_match">Match</p>
-                    <ul id="blue1_awards"></ul>
-
-                    <p id="blue2_number"><br><br><b>0000A</b></p>
-                    <p id="blue2_name">TEAM 1</p>
-                    <p id="blue2_grade"><br>Grade</p>
-                    <p id="blue2_organisation">Organisation</p>
-                    <p id="blue2_city">City</p>
-                    <p id="blue2_robot"><br>Robot: NAME</p>
-                    <p id="blue2_matches_total"><br>Matches played (total): 0</p>
-                    <p id="blue2_wins_total">Matches won (total): 0</p>
-                    <p id="blue2_wins_pct_total">Win % (total): 0</p>
-                    <p id="blue2_matches_event"><br>Matches played (event): 0</p>
-                    <p id="blue2_wins_event">Matches won (event): 0</p>
-                    <p id="blue2_wins_pct_event">Win % (event): 0</p>
-                    <p id="blue2_points_total"><br>Points scored (total): 0</p>
-                    <p id="blue2_points_avg_total">Average points (total): 0</p>
-                    <p id="blue2_points_event"><br>Points scored (event): 0</p>
-                    <p id="blue2_points_avg_event">Average points (event): 0</p>
-                    <p id="blue2_hs_total_score"><br>High score (total): 0</p>
-                    <p id="blue2_hs_total_match">Match</p>
-                    <p id="blue2_hs_total_event">Event</p>
-                    <p id="blue2_hs_event_score"><br>High score (event): 0</p>
-                    <p id="blue2_hs_event_match">Match</p>
-                    <ul id="blue2_awards"></ul>
+                    <div id="red1">
+                        <p id="red1_number">0000A</p>
+                        <p id="red1_grade">HIGH SCHOOL</p>
+                        <p id="red1_name">TEAM 1</p>
+                        <p id="red1_organisation">ORGANISATION</p>
+                        <p id="red1_city">CITY, UNITED KINGDOM</p>
+                        <div class="season">
+                            <div class="stats_3">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="red1_matches_total">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="red1_wins_total">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="red1_wins_pct_total">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red1_points_total">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="red1_points_avg_total">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red1_hs_total_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="red1_hs_total_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub" id="red1_hs_total_event">EVENT NAME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="red1_matches_event">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="red1_wins_event">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="red1_wins_pct_event">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red1_points_event">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="red1_points_avg_event">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red1_hs_event_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="red1_hs_event_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="red1_awards_exc">00</p>
+                                    <p class="stat_sub">Excellence</p>
+                                    <p class="stat_sub_sub">AWARDS</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="red1_awards_tc">00</p>
+                                    <p class="stat_sub">Tournament</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="red1_awards_skills">00</p>
+                                    <p class="stat_sub">Skills</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="red1_awards">
+                            <div><span class="award_title">Excellence Award</span><span class="award_event">ACHIEVED AT EVENT</span></div>
+                        </div>
+                    </div>
+                    <div id="red2" class="team-successive">
+                        <p id="red2_number">0000B</p>
+                        <p id="red2_grade">HIGH SCHOOL</p>
+                        <p id="red2_name">TEAM 2</p>
+                        <p id="red2_organisation">ORGANISATION</p>
+                        <p id="red2_city">CITY, UNITED KINGDOM</p>
+                        <div class="season">
+                            <div class="stats_3">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="red2_matches_total">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="red2_wins_total">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="red2_wins_pct_total">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red2_points_total">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="red2_points_avg_total">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red2_hs_total_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="red2_hs_total_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub" id="red2_hs_total_event">EVENT NAME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="red2_matches_event">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="red2_wins_event">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="red2_wins_pct_event">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red2_points_event">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="red2_points_avg_event">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="red2_hs_event_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="red2_hs_event_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="red2_awards_exc">00</p>
+                                    <p class="stat_sub">Excellence</p>
+                                    <p class="stat_sub_sub">AWARDS</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="red2_awards_tc">00</p>
+                                    <p class="stat_sub">Tournament</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="red2_awards_skills">00</p>
+                                    <p class="stat_sub">Skills</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="red2_awards">
+                            <div><span class="award_title">Excellence Award</span><span class="award_event">ACHIEVED AT EVENT</span></div>
+                        </div>
+                    </div>
+                    <div id="blue1" class="team-successive">
+                        <p id="blue1_number">0000C</p>
+                        <p id="blue1_grade">HIGH SCHOOL</p>
+                        <p id="blue1_name">TEAM 3</p>
+                        <p id="blue1_organisation">ORGANISATION</p>
+                        <p id="blue1_city">CITY, UNITED KINGDOM</p>
+                        <div class="season">
+                            <div class="stats_3">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="blue1_matches_total">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="blue1_wins_total">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="blue1_wins_pct_total">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue1_points_total">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="blue1_points_avg_total">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue1_hs_total_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="blue1_hs_total_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub" id="blue1_hs_total_event">EVENT NAME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="blue1_matches_event">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="blue1_wins_event">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="blue1_wins_pct_event">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue1_points_event">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="blue1_points_avg_event">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue1_hs_event_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="blue1_hs_event_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="blue1_awards_exc">00</p>
+                                    <p class="stat_sub">Excellence</p>
+                                    <p class="stat_sub_sub">AWARDS</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="blue1_awards_tc">00</p>
+                                    <p class="stat_sub">Teamwork</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="blue1_awards_skills">00</p>
+                                    <p class="stat_sub">Skills</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="blue1_awards">
+                            <div><span class="award_title">Excellence Award</span><span class="award_event">ACHIEVED AT EVENT</span></div>
+                        </div>
+                    </div>
+                    <div id="blue2" class="team-successive">
+                        <p id="blue2_number">0000D</p>
+                        <p id="blue2_grade">HIGH SCHOOL</p>
+                        <p id="blue2_name">TEAM 4</p>
+                        <p id="blue2_organisation">ORGANISATION</p>
+                        <p id="blue2_city">CITY, UNITED KINGDOM</p>
+                        <div class="season">
+                            <div class="stats_3">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="blue2_matches_total">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="blue2_wins_total">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="blue2_wins_pct_total">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue2_points_total">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="blue2_points_avg_total">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue2_hs_total_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="blue2_hs_total_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub" id="blue2_hs_total_event">EVENT NAME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="blue2_matches_event">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="blue2_wins_event">00</p>
+                                    <p class="stat_sub">Wins</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="blue2_wins_pct_event">00%</p>
+                                    <p class="stat_sub">Win rate</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue2_points_event">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="blue2_points_avg_event">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="blue2_hs_event_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="blue2_hs_event_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="blue2_awards_exc">00</p>
+                                    <p class="stat_sub">Excellence</p>
+                                    <p class="stat_sub_sub">AWARDS</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="blue2_awards_tc">00</p>
+                                    <p class="stat_sub">Tournament</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="blue2_awards_skills">00</p>
+                                    <p class="stat_sub">Skills</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="blue2_awards">
+                            <div><span class="award_title">Excellence Award</span><span class="award_event">ACHIEVED AT EVENT</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div id="viqc">
-                    <p id="iq1_number"><br><br><b>0000E</b></p>
-                    <p id="iq1_name">TEAM 1 (ES)</p>
-                    <p id="iq1_points_total"><br>Points scored (total): 0</p>
-                    <p id="iq1_points_event">Points scored (event): 0</p>
-                    <p id="iq2_number"><br><br><b>0000F</b></p>
-                    <p id="iq2_name">TEAM 2 (ES)</p>
-                    <p id="iq2_points_total"><br>Points scored (total): 0</p>
-                    <p id="iq2_points_event">Points scored (event): 0</p>
+                <div id="iq">
+                    <div id="iq1">
+                        <p id="iq1_number">0000E</p>
+                        <p id="iq1_grade">ELEMENTARY SCHOOL</p>
+                        <p id="iq1_name">TEAM 5</p>
+                        <p id="iq1_organisation">ORGANISATION</p>
+                        <p id="iq1_city">CITY, UNITED KINGDOM</p>
+                        <div class="season">
+                            <div class="stats_3">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="iq1_matches_total">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="iq1_72_total">00</p>
+                                    <p class="stat_sub">72+ points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="iq1_72_pct_total">00%</p>
+                                    <p class="stat_sub">72+ rate</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq1_points_total">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="iq1_points_avg_total">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq1_hs_total_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="iq1_hs_total_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub" id="iq1_hs_total_event">EVENT NAME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="iq1_matches_event">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="iq1_72_event">00</p>
+                                    <p class="stat_sub">72+ points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="iq1_72_pct_event">00%</p>
+                                    <p class="stat_sub">72+ rate</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq1_points_event">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="iq1_points_avg_event">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq1_hs_event_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="iq1_hs_event_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="iq1_awards_exc">00</p>
+                                    <p class="stat_sub">Excellence</p>
+                                    <p class="stat_sub_sub">AWARDS</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="iq1_awards_tc">00</p>
+                                    <p class="stat_sub">Tournament</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="iq1_awards_skills">00</p>
+                                    <p class="stat_sub">Skills</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="iq1_awards">
+                            <div><span class="award_title">Excellence Award</span><span class="award_event">ACHIEVED AT EVENT</span></div>
+                        </div>
+                    </div>
+                    <div id="iq2" class="team-successive">
+                        <p id="iq2_number">0000F</p>
+                        <p id="iq2_grade">ELEMENTARY SCHOOL</p>
+                        <p id="iq2_name">TEAM 6</p>
+                        <p id="iq2_organisation">ORGANISATION</p>
+                        <p id="iq2_city">CITY, UNITED KINGDOM</p>
+                        <div class="season">
+                            <div class="stats_3">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="iq2_matches_total">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="iq2_72_total">00</p>
+                                    <p class="stat_sub">72+ points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="iq2_72_pct_total">00%</p>
+                                    <p class="stat_sub">72+ rate</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq2_points_total">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="iq2_points_avg_total">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">SEASON</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq2_hs_total_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="iq2_hs_total_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub" id="iq2_hs_total_event">EVENT NAME</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="iq2_matches_event">00</p>
+                                    <p class="stat_sub">Matches</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="iq2_72_event">00</p>
+                                    <p class="stat_sub">72+ points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="iq2_72_pct_event">00%</p>
+                                    <p class="stat_sub">72+ rate</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq2_points_event">00</p>
+                                    <p class="stat_sub">Points</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                                <div class="stats_2_2">
+                                    <p class="stat" id="iq2_points_avg_event">00</p>
+                                    <p class="stat_sub">Average</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                            <div class="stats_2 stats_successive">
+                                <div class="stats_2_1">
+                                    <p class="stat" id="iq2_hs_event_score">00</p>
+                                    <p class="stat_sub">High score</p>
+                                    <p class="stat_sub_sub" id="iq2_hs_event_match">MATCH NUMBER</p>
+                                    <p class="stat_sub_sub">EVENT</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="award">
+                            <div class="stats_3 stats_successive">
+                                <div class="stats_3_1">
+                                    <p class="stat" id="iq2_awards_exc">00</p>
+                                    <p class="stat_sub">Excellence</p>
+                                    <p class="stat_sub_sub">AWARDS</p>
+                                </div>
+                                <div class="stats_3_2">
+                                    <p class="stat" id="iq2_awards_tc">00</p>
+                                    <p class="stat_sub">Tournament</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                                <div class="stats_3_3">
+                                    <p class="stat" id="iq2_awards_skills">00</p>
+                                    <p class="stat_sub">Skills</p>
+                                    <p class="stat_sub_sub">CHAMPIONS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="iq2_awards">
+                            <div><span class="award_title">Excellence Award</span><span class="award_event">ACHIEVED AT EVENT</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p><br><br><b>MANUAL TEAMS</b></p>
-            <p>For IQ, use red 1 and blue 1.</p>
-            <p><br></p>
-            <input class="selector" id="selected_team1" placeholder="Red 1">
-            <input class="selector" id="selected_team2" placeholder="Red 2">
-            <input class="selector" id="selected_team3" placeholder="Blue 1">
-            <input class="selector" id="selected_team4" placeholder="Blue 2">
-            <button id="manual_refresh">Manual Refresh</button>
+            <div id="manual_select">
+                <div class="selection">
+                    <input class="selector s-red" id="manual1" placeholder="RED TEAM 1">
+                    <input class="selector s-blue" id="manual3" placeholder="BLUE TEAM 1">
+                </div>
+                <div class="selection">
+                    <input class="selector s-red" id="manual2" placeholder="RED TEAM 2">
+                    <input class="selector s-blue" id="manual4" placeholder="BLUE TEAM 2">
+                </div>
+                <button id="manual_refresh">MANUAL REFRESH</button>
+            </div>
+            <div id="db_refresh">
+                <button id="db_refresh">REFRESH EVENT DATABASE</button>
+            </div>
         </div>
 
         <script src="main.js" defer></script>
